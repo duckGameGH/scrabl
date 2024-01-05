@@ -1,0 +1,70 @@
+td {
+    border-style: solid;
+    width: 30px;
+    height: 35px;
+    max-width: 30px;
+    max-height: 35px;
+    font-size: 25px;
+    text-align: center;
+}
+table {
+    background-color: #d9ccac;
+    border-style: solid;
+}
+#letter {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    background-color: lightslategrey;
+    z-index: 1;
+}
+#box {
+    position: relative;
+    height: 200px;
+    width: 200px;
+}
+
+.button {
+    position: absolute;
+    top: 0;
+    height: 200px;
+    width: 200px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    z-index: 2;
+}
+.letter {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+
+.box:hover {
+    background-color: #7b7460;
+  } 
+
+.letter:hover {
+    margin-top: -15px;
+}
+.hidden {
+    display: none;
+}
+.column {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+.letter {
+    background-color: white;
+}
