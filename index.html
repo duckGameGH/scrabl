@@ -1,0 +1,33 @@
+<head>
+    <title>Scrabble</title>
+    <script>
+        function check(){
+            if (document.getElementById("create").checked){
+                var element = document.getElementById("join");
+                element.classList.add("hidden");
+            }
+            else {
+                var element = document.getElementById("join");
+                element.classList.remove("hidden");
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="main.css">    
+</head>
+<body>
+    <h1>Welcome to the srabble game</h1>
+    <h3>Please enter your username and select the option you want</h3>
+    <form method="get" action="index.php">
+        <input type="text" id="username" name="username" placeholder="Name"></input>
+        <br>
+        <p>Create game</p>
+        <input type="checkbox" onclick="check()" id="create" name="create"></input>
+        <div id="join">
+            <h4>OR</h4>
+            <p>Join game</p>
+            <input type="number" id="g" name="g" min="1000" max="9999" value="1000">
+        </div>
+        <p>------------------------------------</p>
+        <input type="submit">
+    </form>
+</body>
