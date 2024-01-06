@@ -135,8 +135,8 @@ function readStr(inpStr){
     }
 }
 
-/**
-*@todo Negative indexes at the borders
+/*
+@todo Negative indexes at the borders
 */
 function checkNear(x,y) {
     test = grid.toString().replace(/,/g, '');
