@@ -1,34 +1,16 @@
 let alpha = 'abcdefghijklmnopqrstuvwxyz'.split('');
-let grid = []
+let grid = [];
 let aLetters = [];
 let currentLetter = "";
 let currentLetterIndex = undefined;
 let gameno = "";
 let sLetter = "";
+let leftB = undefined;
+let rightB = undefined;
+let topB = undefined;
+let bottomB = undefined;
 
 let base = "---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------"
-
-
-function getCookie(name) {
-    var dc = document.cookie;
-    var prefix = name + "=";
-    var begin = dc.indexOf("; " + prefix);
-    if (begin == -1) {
-        begin = dc.indexOf(prefix);
-        if (begin != 0) return null;
-    }
-    else
-    {
-        begin += 2;
-        var end = document.cookie.indexOf(";", begin);
-        if (end == -1) {
-        end = dc.length;
-        }
-    }
-    // because unescape has been deprecated, replaced with decodeURI
-    //return unescape(dc.substring(begin + prefix.length, end));
-    return decodeURI(dc.substring(begin + prefix.length, end));
-} 
 
 function scramble(i){
         console.log(i + "aa");
@@ -91,7 +73,7 @@ function gridW(n){
     str = str.replace(/,/g, '');
     console.log(str);
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "write.php", true);
+    xhr.open("POST", "server/write.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
@@ -102,11 +84,11 @@ function gridW(n){
             console.error("La requête a échoué avec le statut : " + xhr.status);
         }
     };
-    xhr.send("s=" + encodeURIComponent(str) + "&n=" + encodeURIComponent(gameno));
+    xhr.send("s=" + encodeURIComponent(str) + "&n=" + encodeURIComponent(document.getElementById("gameno").innerHTML));
 }
 
 function gridR(n){  
-    if (n.length == 0) {
+    if (document.getElementById("gameno").innerHTML.length == 0) {
         document.getElementById("txtHint").innerHTML = "";
         return;
       } else {
@@ -117,7 +99,7 @@ function gridR(n){
             updateBoard();
           }
         };
-        xmlhttp.open("GET", "read.php?n=" + n, true);
+        xmlhttp.open("GET", "server/read.php?n=" + document.getElementById("gameno").innerHTML, true);
         xmlhttp.send();
       }
 }
@@ -143,15 +125,14 @@ function checkNear(x,y) {
     test = test.replace(/-/g, '');
     if(test != ''){
         if(grid[y][x-1] != undefined){
-            let left = grid[y][x-1];}
+            leftB = grid[y][x-1];}
         if(grid[y][x+1] != undefined){
-            let right = grid[y][x+1];}
+            rightB = grid[y][x+1];}
         if(grid[y-1][x] != undefined){
-            let top = grid[y-1][x];}
+            topB = grid[y-1][x];}
         if(grid[y+1][x] != undefined){ 
-            let bottom = grid[y+1][x];}
-        console.log(left, right, top, bottom);
-        if(left!="-" || right!="-" || top!="-" || bottom!="-"){
+            bottomB = grid[y+1][x];}
+        if(leftB!="-" || rightB!="-" || topB!="-" || bottomB!="-"){
             return true;
         }
         else{return false;}
@@ -160,9 +141,8 @@ function checkNear(x,y) {
 }
 
 function sound(effect){
-    var snd = new Audio(effect + ".wav"); // buffers automatically when created
+    var snd = new Audio("sound/" + effect + ".wav"); // buffers automatically when created
     snd.play();
-    console.log("hello");   
 }
 
 //----------------------------------------------------
@@ -201,11 +181,10 @@ function CustomAlert(){
   let customAlert = new CustomAlert();
 
 readStr(base);
-if(getCookie("gameno" != null)){
-    gameno = getCookie("gameno").split(';')[0];
-    
+if(document.getElementById('gameno').innerHTML != null){
+    gameno = document.getElementById('gameno').innerHTML.split(';')[0];
 }
-console.log(getCookie("gameno") + "gameno");
+console.log(document.getElementById('gameno').innerHTML + "gameno");
 updateBoard();
 
 

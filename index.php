@@ -1,25 +1,36 @@
 <head>
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="alerts.css">
+    <link rel="stylesheet" href="static/main.css">
+    <link rel="stylesheet" href="static/alerts.css">
 </head>
 <body>
     <?php
-    setcookie("user",$_GET['username']);
-    if($_GET['g'] != 1000 && file_exists("gameno" . $_GET['g'] . ".txt")) {
-        setcookie("gameno",$_GET['g']) ;
+    $user = $_GET['username'];
+    if(isset($_GET['create'])) {
+        $create = true;
+        echo "a ";
     }
-    else if($_GET['create'] = 'on'){
+    else{
+        $create = false;
+        echo "ab ";
+    }
+    if($_GET['g'] != 1000 && file_exists("save/gameno" . $_GET['g'] . ".txt") && $create == false) {
+        echo "b ";
+        $gameno = $_GET['g'];
+    }
+    else if($create == true){
+        echo "lol";
         $gameno = rand(1000, 9999);
-        setcookie("gameno", $gameno);
+        echo "bb ";
     }
     else {
         exit("Fatal error : unknown; trying to reach game number " . $_GET['g']);
+        echo "c ";
     }
     
-    $dest = 'gameno'. $_COOKIE['gameno'] . '.txt';
+    $dest = '/save/gameno'. $gameno . '.txt';
     const ALPHA = array('a', 'b', 'c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
     ?>
-    <?php echo '<script src="main.js"></script>';?>
+    <?php echo '<script src="static/main.js"></script>';?>
     <div class="column">
         <table>
             <?php 
@@ -33,7 +44,7 @@
         </table>
     </div>
     <div class="column">
-        <?php echo "<h2>" . $_COOKIE['gameno'] . "</h2><h3>" . $_COOKIE['user'] . "</h3>";?>
+        <?php echo $gameno; echo "<h2 id='gameno'>" . $gameno . "</h2><h3 id='user'>" . $user . "</h3>";?>
         <table>
             <?php
             for($i = 0; $i < 8 ; ++$i) {
@@ -49,8 +60,8 @@
             
         </table>
         <div id="errors"></div>
-        <?php echo '<input type="button" onclick="gridW(\'' . $_COOKIE['gameno'] . '\')"></input>'?>
-        <?php echo '<input type="button" onclick="gridR(\'' . $_COOKIE['gameno'] . '\')"></input>'?>
+        <?php echo '<input type="button" onclick="gridW(\'' . $gameno . '\')">Save</input>'?>
+        <?php echo '<input type="button" onclick="gridR(\'' . $gameno . '\')">Load</input>'?>
     </div>
     
     
