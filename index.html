@@ -1,5 +1,9 @@
 <head>
     <title>Scrabble</title>
+    <link rel="stylesheet" href="static/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
     <script>
         function check(){
             if (document.getElementById("create").checked){
@@ -12,22 +16,35 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="main.css">    
+
 </head>
 <body>
-    <h1>Welcome to the srabble game</h1>
-    <h3>Please enter your username and select the option you want</h3>
-    <form method="get" action="index.php">
-        <input type="text" id="username" name="username" placeholder="Name"></input>
-        <br>
-        <p>Create game</p>
-        <input type="checkbox" onclick="check()" id="create" name="create"></input>
-        <div id="join">
-            <h4>OR</h4>
-            <p>Join game</p>
-            <input type="number" id="g" name="g" min="1000" max="9999" value="1000">
+    <nav class="">
+        <a>Button1</a>
+        <a>Button2</a>
+        <a>Button3</a>
+        <a>Button4</a>
+        <a>Button</a>
+    </nav>
+    <div class="row">
+        <div class="col1">
+            <h1>SCRABL</h1>
+            <h3>Playing scrabble online<br>has never been easier</h3>
         </div>
-        <p>------------------------------------</p>
-        <input type="submit">
-    </form>
+        <div class="col2">
+            <form method="get" action="index.php">
+                <input type="text" id="username" name="username" placeholder="Name"></input>
+                <br>
+                <p>Create game</p>
+                <input type="checkbox" onclick="check()" id="create" name="create"></input>
+                <div id="join">
+                    <h4>OR</h4>
+                    <p>Join game</p>
+                    <input type="number" id="g" name="g" min="1000" max="9999" value="1000">
+                </div>
+                <p>------------------------------------</p>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
 </body>
