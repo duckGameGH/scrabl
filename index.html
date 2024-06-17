@@ -26,16 +26,18 @@
 
 </head>
 <body>
-    <nav class="">
-        <a>Button1</a>
-        <a>Button2</a>
-        <a>Button3</a>
-        <a>Button4</a>
-        <a>Button</a>
+    <nav class="noselect">
+        <!--<img width="50px" height="50px" src="/scrabl/images/shape.svg">-->
+        <a class="main">SCL</a>
+        <a class="this" href="index.html">Home</a>
+        <a class="" href="about.html">About</a>
+        <a class="" href="logreg.php">Login/Register</a>
+        <a class="" href="account.php">My account/ Stats</a>
+        <a class="" href="index.html" >Play</a>
     </nav>
     <div class="row">
         <div class="col-sm-4 col1">
-            <h1>SCRABL</h1>
+            <h1>SCRBL</h1>
             <h3>Playing scrabble online<br>has never been easier</h3>
         </div>
         <div class="col-sm-8 col2 well well-lg">
@@ -48,9 +50,9 @@
                     <label for="create">Check to create a new game:</label>
                     <input type="checkbox" onclick="check()" class="form-control" id="create" name="create"></input>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="join">
                     <h4>OR</h4>
-                    <label for="g">Enter the name of the game you want to join:</label>
+                    <label for="g">Enter the code of the game you want to join:</label>
                     <input type="number" id="g" name="g" class="form-control" min="1000" max="9999" value="1000">
                 </div>
                 <div class="form-group">
