@@ -1,9 +1,16 @@
 <head>
     <title>Scrabble</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
     <script>
         function check(){
             if (document.getElementById("create").checked){
@@ -27,23 +34,27 @@
         <a>Button</a>
     </nav>
     <div class="row">
-        <div class="col1">
+        <div class="col-sm-4 col1">
             <h1>SCRABL</h1>
             <h3>Playing scrabble online<br>has never been easier</h3>
         </div>
-        <div class="col2">
+        <div class="col-sm-8 col2 well well-lg">
             <form method="get" action="index.php">
-                <input type="text" id="username" name="username" placeholder="Name"></input>
-                <br>
-                <p>Create game</p>
-                <input type="checkbox" onclick="check()" id="create" name="create"></input>
-                <div id="join">
-                    <h4>OR</h4>
-                    <p>Join game</p>
-                    <input type="number" id="g" name="g" min="1000" max="9999" value="1000">
+                <div class="form-group">
+                    <label for="username">Your username:</label>
+                    <input type="text" id="username" class="form-control" name="username"></input>
                 </div>
-                <p>------------------------------------</p>
-                <input type="submit">
+                <div class="form-group">
+                    <label for="create">Check to create a new game:</label>
+                    <input type="checkbox" onclick="check()" class="form-control" id="create" name="create"></input>
+                </div>
+                <div class="form-group">
+                    <h4>OR</h4>
+                    <label for="g">Enter the name of the game you want to join:</label>
+                    <input type="number" id="g" name="g" class="form-control" min="1000" max="9999" value="1000">
+                </div>
+                <div class="form-group">
+                <input type="submit" class="btn btn-warning">
             </form>
         </div>
     </div>
