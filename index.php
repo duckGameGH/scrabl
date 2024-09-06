@@ -14,7 +14,7 @@
 <body>
     <nav>
         <!--<img width="50px" height="50px" src="/scrabl/images/shape.svg">-->
-        <a class="main">SCL</a>
+        <a class="main" href="index.html">SCL</a>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="logreg.php">Login/Register</a>
