@@ -9,8 +9,11 @@ let leftB = undefined;
 let rightB = undefined;
 let topB = undefined;
 let bottomB = undefined;
+let turn;
 
 let base = "---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------\n---------------"
+
+
 
 function scramble(i){
         console.log(i + "aa");
@@ -39,13 +42,14 @@ function boardAdd(y,x){
             document.getElementById("j" + currentLetterIndex).innerHTML = aLetters[currentLetterIndex];
             updateBoard();
             scramble(currentLetterIndex);
+            sound("pop");
         }
         else{
             customAlert.alert('This tile already has a letter');
         }
     }
     else {
-        customAlert.alert('The selected tile could not be added');
+        customAlert.alert('Please select a tile adjacent to an existing letter');
     }
 }
 
@@ -57,14 +61,14 @@ function updateBoard(){
             document.getElementById(i + "_" + y).innerHTML = grid[i][y];
             //document.getElementById(i + "_" + y).innerHTML = grid[i][y].classList.add("letter");
             console.log(i + "_" + y + " ! " + grid[i][y] + " ! " + document.getElementById(i + "_" + y).innerHTML);  
-            sound("pop");
             }
         }
     }
     console.log('updated');
+    gridW();
 }
 
-function gridW(n){
+function gridW(){
     let str = "";
     for(let i=0; i<15; i++){
         str = str + grid[i].toString() + "\n";
@@ -87,7 +91,10 @@ function gridW(n){
     xhr.send("s=" + encodeURIComponent(str) + "&n=" + encodeURIComponent(document.getElementById("gameno").innerHTML));
 }
 
-function gridR(n){  
+setInterval(gridR,500);
+
+function gridR(){  
+    console.log("Reloaded");
     if (document.getElementById("gameno").innerHTML.length == 0) {
         document.getElementById("txtHint").innerHTML = "";
         return;
@@ -179,6 +186,7 @@ function CustomAlert(){
   }
   
   let customAlert = new CustomAlert();
+
 
 readStr(base);
 if(document.getElementById('gameno').innerHTML != null){

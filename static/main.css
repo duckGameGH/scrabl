@@ -1,2 +1,24 @@
+.board {
+    border-style: outset;
+    margin-top: 30px;
+    margin-left: 200px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.uPanel {
+    margin-top:80%;
+    border-style: outset;
+    background-color: rgb(170, 170, 170);
+    text-align: center;
+    padding:15px;
+}
 
+.letters {
+    margin-left:35px;
+    margin-bottom: 10px;
+}
+
+.box {
+    width:32px;
+    height:32px;
+}
 
