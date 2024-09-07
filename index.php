@@ -31,7 +31,6 @@
                 $create = false;
             }
             if ($_GET['g'] != 1000 && file_exists("save/gameno" . $_GET['g'] . ".txt") && $create == false) {
-                echo "b ";
                 $gameno = $_GET['g'];
             } else if ($create == true) {
                 $gameno = rand(1000, 9999);
@@ -83,3 +82,4 @@
             </div>
         </div>
     </div>
+<?php if($create == true) { echo "<script>gridW();</script>";} ?>
